@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #444;
+            text-align: center;
+        }
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #6c7ae0;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underlining */
+            margin-bottom: 10px; /* Add margin */
+            display: inline-block; /* Make sure buttons don't break into new lines */
+        }
+        button:hover {
+            background-color: #5563c1;
+        }
+        .button {
+            background-color: #6c7ae0;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underlining */
+            margin-bottom: 10px; /* Add margin */
+            display: inline-block; /* Make sure buttons don't break into new lines */
+        }
+        .button:hover {
+            background-color: #5563c1;
+        }
+        p {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Goals</h1>
+    
+    <form action="/goals" method="post" style="text-align: center;">
+        <label for="steps_goal">Steps Goal:</label>
+        <input type="number" id="steps_goal" name="steps_goal" required>
+        
+        <label for="calories_goal">Calories Goal:</label>
+        <input type="number" id="calories_goal" name="calories_goal" required>
+        
+        <button type="submit">Set Goals</button>
+    </form>
+    
+    <p>Current Goals:</p>
+    <p>Steps Goal: {{ current_goals.steps_goal }}</p>
+    <p>Calories Goal: {{ current_goals.calories_goal }}</p>
+    
+    <div style="text-align: center;">
+        <a href="/" class="button">Home</a>
+        <a href="/sessions" class="button">Sessions</a>
+    </div>
+</body>
+</html>
+

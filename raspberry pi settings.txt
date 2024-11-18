@@ -1,0 +1,4 @@
+user: pi
+pass: raspberry
+
+ssh pi@raspberrypi

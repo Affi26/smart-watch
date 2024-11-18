@@ -1,0 +1,10 @@
+Use the Raspberry Pi imager application and edit user settings there,
+
+OR
+
+from https://www.raspberrypi.com/news/raspberry-pi-bullseye-update-april-2022/
+
+"There are also mechanisms to preconfigure an image without using Imager. To set up a user on first boot and bypass the wizard completely, create a file called userconf or userconf.txt in the boot partition of the SD card; this is the part of the SD card which can be seen when it is mounted in a Windows or MacOS computer. This file should contain a single line of text, consisting of username:encrypted- password – so your desired username, followed immediately by a colon, followed immediately by an encrypted representation of the password you want to use."
+
+
+You can ssh directly to pi@raspberrypi from a terminal by using either wireless connection (pi connected to same network) or with direct ethernet cable.

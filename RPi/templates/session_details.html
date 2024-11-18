@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #444;
+            text-align: center;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #6c7ae0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .button {
+            background-color: #6c7ae0;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underlining */
+            margin-bottom: 10px; /* Add margin */
+            display: inline-block; /* Make sure buttons don't break into new lines */
+        }
+        .button:hover {
+            background-color: #5563c1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Session Details</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ session.id }}</td>
+        </tr>
+        <tr>
+            <th>Steps Count</th>
+            <td>{{ session.steps }}</td>
+        </tr>
+        <tr>
+            <th>Distance (m)</th>
+            <td>{{ session.distance }}</td>
+        </tr>
+        <tr>
+            <th>Calories (kcal)</th>
+            <td>{{ '%.2f' % (session.kcal) }}</td>
+        </tr>
+        <tr>
+            <th>Duration (s)</th>
+            <td>{{ session.duration }}</td>
+        </tr>
+        <tr>
+            <th>Session Date & Time</th>
+            <td>20{{ session.session_time[0:2] }}-{{ session.session_time[2:4] }}-{{ session.session_time[4:6] }} {{ session.session_time[6:8] }}:{{ session.session_time[8:10] }}</td>
+        </tr>
+        {% if goals_data %}
+        <tr>
+            <th>Steps Goal</th>
+            <td>{{ goals_data.steps_goal }}</td>
+        </tr>
+        <tr>
+            <th>Calories Goal</th>
+            <td>{{ goals_data.calories_goal }}</td>
+        </tr>
+        <tr>
+            <th>Steps Completed (%)</th>
+            <td>{{ '%.1f' % ((session.steps / goals_data.steps_goal) * 100) }}%</td>
+        </tr>
+        <tr>
+            <th>Calories Burned (%)</th>
+            <td>{{ '%.1f' % ((session.kcal / goals_data.calories_goal) * 100) }}%</td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <div style="text-align: center;">
+        <a href="/sessions" class="button">Sessions</a>
+        <a href="/goals" class="button">Goals</a>
+    </div>
+
+</body>
+</html>
